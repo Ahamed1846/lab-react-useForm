@@ -1,125 +1,70 @@
-![Logo-nav](https://s3.ap-south-1.amazonaws.com/kalvi-education.github.io/front-end-web-development/Kalvium-Logo.png)
+# Getting Started with Create React App
 
-### Learning Goals:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The aim of this lab is to use `React Hook Forms` - in order to implement a form. The design can be similar to what you made in the previous lab on `forms`. But this time, instead of using `event handlers` we will be using `React Hook Forms` to achieve the same target - which is to create a form.
+## Available Scripts
 
-***NOTE:*** Once you complete this lab - then it's up to you to decide - as which way is better or when to use which way in order to implement forms using react. So, it will be really good for your learning, if you complete this lab and along with that - compare the differences between the previous approach (usign event handlers) that you used to create a form with this approach (using Hooks) to create a form.
+In the project directory, you can run:
 
+### `npm start`
 
-### Steps:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-1. Create a new project. ( Hope you remember the command now 🙂).
-2. Create a form using `useForm` hook. -> Remember to install it before using it by the following command:
-    `npm install react-hook-form`
-3. Your form should include the following fields:
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-    1. First Name 
-    2. Last Name
-    3. Email  --> Constraints that must be there for this field: 
-        1. you should not be able to submit the form, if the email id is not valid. If the email id is not valid it should give an error message as: `invalid email`.
-        
-        **Invalid email:** For now, you can consider that, an email is invalid, if `@` symbol is not added.
+### `npm test`
 
-        Here is a demo for you:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-        ![email](https://s3.ap-south-1.amazonaws.com/kalvi-education.github.io/front-end-web-development/react-useForm-email-validation.gif)
+### `npm run build`
 
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    4. Password --> Constraints that must be there for this field:
-        1. you should not be able to submit the form, if the password is less than 5 characters or greater than 20 characters. If the password is less than 4 characters then it should throw an error as `Password must be more than 4 characters` and if the password is more than 20 characters then it should throw an error as `Password cannot be more than 20 characters`
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-        Here is a demo for you:
+### `npm run eject`
 
-        ![password](https://s3.ap-south-1.amazonaws.com/kalvi-education.github.io/front-end-web-development/react-useForm-password-validation.gif)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-        
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-  You should not be able to submit the form, if any one of the field is empty. All the field must be filled ( satisfying the above mentioned constraints ) only then you should be able to submit the form succesfully.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-  Here is a gif, which shows a succesful submition:
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-  ![complete](https://s3.ap-south-1.amazonaws.com/kalvi-education.github.io/front-end-web-development/react-useForm-complete.gif)
+## Learn More
 
-  Here is a gif, which shows, that if any field is empty -> error messages must be displayed.
-  
-  ![incomplete](https://s3.ap-south-1.amazonaws.com/kalvi-education.github.io/front-end-web-development/react-useForm-incomplete.gif)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-  
-### Version Alert !!
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-One very important thing to note is that, there have been a minor change in the sytax of `useForm hook`.
-Go through the following description to understand better.
+### Code Splitting
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Simple input with required and errors.message features, necessary changes in update:
+### Analyzing the Bundle Size
 
-From version 6.x.x:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-```js
+### Making a Progressive Web App
 
-function MyComponent(props) {
-  const { register, handleSubmit, errors } = useForm();
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-  const onSubmit = (values) => {...};
+### Advanced Configuration
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          name="message"
-          autoComplete="off"
-          ref={register({
-            required: "Required",
-          })}
-        />
-        {errors.message && errors.message.message}
-        <input type="submit" />
-      </form>
-    </div>
-  );
-}
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-```
+### Deployment
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-To version 7.x.x:
+### `npm run build` fails to minify
 
-
-```js
-
-function MyComponent(props) {
-  // check how errors are being exported
-  const { register, handleSubmit, formState: { errors }} = useForm();
-
-  const onSubmit = (values) => {...};
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          name="message"
-          autoComplete="off"
-
-          // check how register is being used.
-          {...register("message", {
-            required: "Required",
-          })}
-        />
-        {errors.message && errors.message.message}
-        <input type="submit" />
-      </form>
-    </div>
-  );
-}
-
-```
-
-In addition to register fix, if you use errors from useForm(), now errors feature is exported from formState.
-
-Feel free to go through the following link for more information about the change in the syntax:
-
-[Syntax Change](https://stackoverflow.com/questions/66927051/getting-uncaught-typeerror-path-split-is-not-a-function-in-react)
-
-Happy Coding ❤️!
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
